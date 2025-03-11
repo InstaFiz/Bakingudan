@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class BombCode : MonoBehaviour
 {
+
+    // [Header("Bomb")]
+
+
+    public KeyCode inputKey = KeyCode.LeftShift;
+    public GameObject preBomb; 
+    public Transform BombTransform;
+    //public Transform player;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +27,15 @@ public class BombCode : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+        if (Input.GetKeyDown(inputKey)) {
 
             //spawn object
-            Instantiate(Bomb, transform.position, Quaternion.identity);
+            spawn();
         }
         
+    }
+    void spawn() {    
+        //game object  bomb = make( bombobject, at player position, don't rotate);
+        GameObject Bomb = Instantiate(preBomb, BombTransform.position, Quaternion.identity);
     }
 }
