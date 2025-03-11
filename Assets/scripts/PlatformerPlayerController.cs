@@ -14,6 +14,9 @@ public class PlatformerPlayerController : MonoBehaviour
     private bool isGrounded;
     private float horizontalInput;
 
+    public bool theKing = false;
+    public GameObject crownVanity;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,8 +31,10 @@ public class PlatformerPlayerController : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
 
-	if (Input.GetButtonDown("Jump") && isGrounded)
-	    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+	    if (Input.GetButtonDown("Jump") && isGrounded)
+	        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+        crownVanity.GetComponent<Renderer>().enabled = theKing;
     }
 
     void FixedUpdate()

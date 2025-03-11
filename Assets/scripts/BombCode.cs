@@ -27,7 +27,7 @@ public class BombCode : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(inputKey)) {
+        if (Input.GetKeyDown(inputKey) && GetComponent<PlatformerPlayerController>().theKing == true) {
 
             //spawn object
             spawn();
