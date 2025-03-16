@@ -21,31 +21,23 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         // init values
-	gameOver = false;
-	won = false;
-	score = 0;
+	    gameOver = false;
+	    won = false;
+	    score = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (!gameOver) {
-	    textbox.text = "Score: " + score;
-	}
-
-        if (score >= scoreToWin) {
-	    won = true;
-	    gameOver = true;
-	}
+	        textbox.text = "FIGHT!";
+	    }
 
         if (gameOver) {
-	    if (won)
-		textbox.text = "You win!\nPress R to Try Again.";
-	    else
-		textbox.text = "You lose!\nPress R to Try Again.";
+		    textbox.text = "WE HAVE A KING!\nPress R to Try Again.";
 
-	    if (Input.GetKeyDown(KeyCode.R))
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-	}
+	        if (Input.GetKeyDown(KeyCode.R))
+		    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	    }
     }
 }
