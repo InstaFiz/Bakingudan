@@ -14,6 +14,7 @@ public class BombCode : MonoBehaviour
     public float throwForce = 10f;
     private GameObject heldBomb = null; // Track if the player is holding a bomb
     private PlatformerPlayerController playerController;
+    public GameObject crown;
 
     void Start()
     {
@@ -66,5 +67,11 @@ public class BombCode : MonoBehaviour
         }
 
         heldBomb = null; // Reset held bomb
+
+        playerController.durability -= 1;
+        if (playerController.durability <= 0)
+        {
+            crown.GetComponent<CrownScript>().active = true;
+        }
     }
 }

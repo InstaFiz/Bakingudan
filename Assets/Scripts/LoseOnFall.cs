@@ -14,6 +14,7 @@ public class LoseOnFall : MonoBehaviour
         if (transform.position.y < lowestY)
         {
             transform.position = new Vector3(-2.62f, 0.9f, 0f);
+            GetComponent<PlatformerPlayerController>().health -= 100;
             if (GetComponent<PlatformerPlayerController>().theKing == true) {
                 GetComponent<PlatformerPlayerController>().theKing = false;
                 crown.GetComponent<CrownScript>().active = true;

@@ -19,6 +19,7 @@ public class CrownScript : MonoBehaviour
         {
             active = false;
             collision.gameObject.GetComponent<PlatformerPlayerController>().theKing = true;
+            collision.gameObject.GetComponent<PlatformerPlayerController>().durability = 10;
         }
 
 

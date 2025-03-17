@@ -20,7 +20,10 @@ public class PlatformerPlayerController : MonoBehaviour
     public bool theKing = false;
     public GameObject crownVanity;
 
-    public int health = 400;
+    public int health = 1000;
+    public int durability = 0;
+
+    public bool canMove = false;
 
     // Start is called before the first frame update
     void Start()
@@ -46,16 +49,21 @@ public class PlatformerPlayerController : MonoBehaviour
             ScoreManager.gameOver = true;
             Object.Destroy(gameObject);
         }
+
+        if (durability <= 0)
+        {
+            theKing = false;
+        }
     }
 
     void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
-	isGrounded = Physics2D.OverlapCircle(GroundCheck.position, GroundCheckRadius, GroundLayer);
+	    isGrounded = Physics2D.OverlapCircle(GroundCheck.position, GroundCheckRadius, GroundLayer);
 
-	if (horizontalInput > 0)
-	    transform.localScale = new Vector3(1f, 1f, 1f);
-	else if (horizontalInput < 0)
-	    transform.localScale = new Vector3(-1f, 1f, 1f);
+        if (horizontalInput > 0)
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        else if (horizontalInput < 0)
+            transform.localScale = new Vector3(-1f, 1f, 1f);
     }
 }
