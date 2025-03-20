@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//Must add this to use TMP_Text
 using TMPro;
 
 public class DialogManager : MonoBehaviour
 {
+
     public TMP_Text textbox;
     public string[] sentences;
     private int index;
@@ -12,47 +14,48 @@ public class DialogManager : MonoBehaviour
 
     public GameObject continueButton;
     public GameObject dialogPanel;
-
-    void OnEnable()
+    private void OnEnable()
     {
-	continueButton.SetActive(false);
-	StartCoroutine(Type());
+        continueButton.SetActive(false);
+        StartCoroutine(Type());
     }
 
     IEnumerator Type()
     {
-	textbox.text = "";
-	foreach (char letter in sentences[index])
-	{
-	    textbox.text += letter;
-	    yield return new WaitForSeconds(typingSpeed);
-	}
-	continueButton.SetActive(true);
-    }
+        textbox.text = " ";
+        foreach (char letter in sentences[index])
+        {
+            textbox.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
 
+        continueButton.SetActive(true);
+    }
+    /// <summary>
+    /// 
+    /// </summary>
     public void NextSentence()
     {
-	continueButton.SetActive(false);
-	if (index < sentences.Length - 1)
-	{
-	    index++;
-	    textbox.text = "";
-	    StartCoroutine(Type());
-	} else {
-	    textbox.text = "";
-	    dialogPanel.SetActive(false);
-	}
+
+        continueButton.SetActive(false);
+        if (index < sentences.Length - 1)
+        {
+            index++;
+            textbox.text = "";
+            StartCoroutine(Type());
+        }
+        else
+        {
+            textbox.text = " ";
+            dialogPanel.SetActive(false);
+        }
+
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
