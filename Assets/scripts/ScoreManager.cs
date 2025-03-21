@@ -6,30 +6,37 @@ using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
-    // Public static variables
-    // Can be accessed from any script but cannot be seen in the inspector
+    public static ScoreManager Instance { get; private set; }
+
     public static bool gameOver;
     public static bool won;
     public static int score;
     public GameObject textBG;
     bool gameStarted = false;
+    private int activePlayers = 2; // Track the number of players remaining
 
-    // Reference to our textbox
-    // Must be set in the inspector
     public TMP_Text textbox;
     public int scoreToWin;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        // init values
-	    gameOver = false;
-	    won = false;
-	    score = 0;
-
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        gameOver = false;
+        won = false;
+        score = 0;
+    }
+
     void Update()
     {
         if (!gameStarted)
@@ -42,11 +49,24 @@ public class ScoreManager : MonoBehaviour
             }
         }
 
-        if (gameOver) {
-		    textbox.text = "WE HAVE A KING!\nPress R to Try Again.";
+        if (gameOver)
+        {
+            textbox.text = "WE HAVE A KING!\nPress R to Try Again.";
 
-	        if (Input.GetKeyDown(KeyCode.R))
-		    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-	    }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
+    }
+
+    public void PlayerEliminated()
+    {
+        activePlayers--;
+
+        if (activePlayers == 1)
+        {
+            gameOver = true;
+        }
     }
 }

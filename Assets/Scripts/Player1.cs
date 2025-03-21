@@ -29,6 +29,7 @@ public class Player1 : MonoBehaviour
 
     void Die()
     {
-        gameObject.SetActive(false); // Disable player on death (you can replace this with respawn logic)
+        gameObject.SetActive(false); // Disable player on death
+        ScoreManager.Instance.PlayerEliminated(); // Notify ScoreManager
     }
 }
