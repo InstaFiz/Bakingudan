@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bomb : MonoBehaviour
-{
+{   
+    public AudioClip explodeSound;
+    private AudioSource bombAudio;
+
+
     public float explosionDelay = 3f; // Time before explosion
     public GameObject explosionEffect; // Assign an explosion animation or particle effect
     private bool hasExploded = false;
@@ -12,6 +16,8 @@ public class Bomb : MonoBehaviour
     void Start()
     {
         // The bomb should only explode after being thrown
+        bombAudio = GetComponent<AudioSource>();
+
     }
 
     // This function starts the explosion countdown
@@ -41,6 +47,8 @@ public class Bomb : MonoBehaviour
         hasExploded = true;
         if (explosionEffect)
         {
+            bombAudio.PlayOneShot(explodeSound, 1.0f);
+
             GameObject explosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
 
             // Pass bomb damage to explosion

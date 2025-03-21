@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PlatformerPlayerController : MonoBehaviour
 {
+
+
+    public AudioClip jumpSound;
+    
+
+    private AudioSource playerAudio;
+
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
     public LayerMask GroundLayer;
@@ -28,6 +35,7 @@ public class PlatformerPlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerAudio = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
 
 	if (GroundCheck == null)
@@ -39,9 +47,11 @@ public class PlatformerPlayerController : MonoBehaviour
     {
         horizontalInput = Input.GetAxis(horizontalNum);
 
-	    if (Input.GetButtonDown(jumpNum) && isGrounded)
-	        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-
+        if (Input.GetButtonDown(jumpNum) && isGrounded)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            playerAudio.PlayOneShot(jumpSound, 1.0f);
+        }
         crownVanity.GetComponent<Renderer>().enabled = theKing;
 
         if (health <= 0)
