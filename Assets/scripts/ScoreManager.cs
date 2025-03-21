@@ -18,6 +18,8 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text textbox;
     public int scoreToWin;
 
+    private string winningPlayer = "";
+
     void Awake()
     {
         if (Instance == null)
@@ -51,7 +53,7 @@ public class ScoreManager : MonoBehaviour
 
         if (gameOver)
         {
-            textbox.text = "WE HAVE A KING!\nPress R to Try Again.";
+            textbox.text = $"{winningPlayer} IS THE KING!\nPress R to Try Again.";
 
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -60,12 +62,13 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void PlayerEliminated()
+    public void PlayerEliminated(string eliminatedPlayer)
     {
         activePlayers--;
 
         if (activePlayers == 1)
         {
+            winningPlayer = eliminatedPlayer == "Player 1" ? "Player 2" : "Player 1";
             gameOver = true;
         }
     }
