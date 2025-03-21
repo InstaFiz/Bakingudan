@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player2 : MonoBehaviour
 {
-
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBarPlayer2 healthBar;
@@ -30,6 +29,7 @@ public class Player2 : MonoBehaviour
 
     void Die()
     {
-        gameObject.SetActive(false); // Disable player on death (you can replace this with respawn logic)
+        gameObject.SetActive(false); // Disable player on death
+        ScoreManager.Instance.PlayerEliminated(); // Notify ScoreManager
     }
 }

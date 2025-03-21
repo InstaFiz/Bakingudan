@@ -1569,7 +1569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1116053696
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3071,6 +3071,14 @@ PrefabInstance:
       propertyPath: continueButton
       value: 
       objectReference: {fileID: 209206323}
+    - target: {fileID: 5709506966934032189, guid: c3084aa721e202b439c83d141c7d7aff, type: 3}
+      propertyPath: sentences.Array.data[0]
+      value: Be the last player to survive or get blown up by your foe...
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709506966934032189, guid: c3084aa721e202b439c83d141c7d7aff, type: 3}
+      propertyPath: sentences.Array.data[1]
+      value: Throw your bombs and evade your opponents....
+      objectReference: {fileID: 0}
     - target: {fileID: 5709506966934032190, guid: c3084aa721e202b439c83d141c7d7aff, type: 3}
       propertyPath: m_Name
       value: Dialog Manager intro
