@@ -8,13 +8,12 @@ public class BombCode : MonoBehaviour
     // [Header("Bomb")]
 
 
-    public KeyCode inputKey = KeyCode.LeftShift;
+    public KeyCode inputKey; // Unique input key per player
     public GameObject preBomb; // Bomb prefab
     public Transform bombHoldPoint; // Where the bomb is held before throwing
     public float throwForce = 10f;
     private GameObject heldBomb = null; // Track if the player is holding a bomb
     private PlatformerPlayerController playerController;
-    public GameObject crown;
 
     void Start()
     {
@@ -23,18 +22,15 @@ public class BombCode : MonoBehaviour
 
     void Update()
     {
-        if (playerController.theKing) // Only allow bomb pickup/throw if player has crown
+        if (Input.GetKeyDown(inputKey))
         {
-            if (Input.GetKeyDown(inputKey))
+            if (heldBomb == null)
             {
-                if (heldBomb == null)
-                {
-                    PickUpBomb();
-                }
-                else
-                {
-                    ThrowBomb();
-                }
+                PickUpBomb();
+            }
+            else
+            {
+                ThrowBomb();
             }
         }
     }
@@ -59,6 +55,9 @@ public class BombCode : MonoBehaviour
         Bomb bombScript = heldBomb.GetComponent<Bomb>();
         if (bombScript != null)
         {
+            // If player has the crown, increase bomb damage
+            bombScript.damage = playerController.theKing ? 50 : 25;
+
             bombScript.StartExplosionTimer();
         }
         else
@@ -67,11 +66,5 @@ public class BombCode : MonoBehaviour
         }
 
         heldBomb = null; // Reset held bomb
-
-        playerController.durability -= 1;
-        if (playerController.durability <= 0)
-        {
-            crown.GetComponent<CrownScript>().active = true;
-        }
     }
 }

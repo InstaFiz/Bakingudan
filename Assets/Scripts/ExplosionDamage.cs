@@ -4,35 +4,32 @@ using UnityEngine;
 
 public class ExplosionDamage : MonoBehaviour
 {
-    bool active = true;
-    private GameObject playerDamaged;
-    private PlatformerPlayerController playerController;
+    public int damageAmount = 25; // Default damage (updated by bomb)
+    private bool active = true;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (active && collision.gameObject.tag == "Player")
+        if (active && collision.gameObject.CompareTag("Player"))
         {
-            playerDamaged = collision.gameObject;
-            playerController = playerDamaged.GetComponent<PlatformerPlayerController>();
-
-            if (playerController.theKing == false)
+            Player1 player1 = collision.gameObject.GetComponent<Player1>();
+            if (player1 != null)
             {
-                active = false;
-                playerController.health -= 25;
+                active = false; // Prevent multiple hits
+                player1.TakeDamage(damageAmount);
+                return;
+            }
+
+            Player2 player2 = collision.gameObject.GetComponent<Player2>();
+            if (player2 != null)
+            {
+                active = false; // Prevent multiple hits
+                player2.TakeDamage(damageAmount);
             }
         }
     }
 
-
-// Start is called before the first frame update
     void Start()
     {
-        GetComponent<Renderer>().enabled = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GetComponent<Renderer>().enabled = false; // Hide the explosion trigger
     }
 }

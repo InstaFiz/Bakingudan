@@ -7,6 +7,7 @@ public class Bomb : MonoBehaviour
     public float explosionDelay = 3f; // Time before explosion
     public GameObject explosionEffect; // Assign an explosion animation or particle effect
     private bool hasExploded = false;
+    public int damage = 25; // Default bomb damage (increased if thrown by king)
 
     void Start()
     {
@@ -40,7 +41,14 @@ public class Bomb : MonoBehaviour
         hasExploded = true;
         if (explosionEffect)
         {
-            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            GameObject explosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+
+            // Pass bomb damage to explosion
+            ExplosionDamage explosionDamage = explosion.GetComponent<ExplosionDamage>();
+            if (explosionDamage != null)
+            {
+                explosionDamage.damageAmount = damage; // Set explosion damage
+            }
         }
 
         Destroy(gameObject); // Destroy the bomb
