@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Punch : MonoBehaviour
+public class Fisthit : MonoBehaviour
 {
 
 
@@ -17,7 +17,7 @@ public class Punch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerController = GetComponent<PlatformerPlayerController>();
+   //     playerController = GetComponent<PlatformerPlayerController>();
     }
 
     // Update is called once per frame
@@ -27,20 +27,20 @@ public class Punch : MonoBehaviour
     {
 
 
-        if (Input.GetKeyDown(inputKey))
-        {
-            punch();
+       // if (Input.GetKeyDown(inputKey))
+     //   {
+          //  punch();
 
 
-        }
+       // }
 
     }
 
-    void punch() {
+    void hit() {
         //  puncher =Instantiate(fist, fistSpawn.position, Quaternion.identity);
-        Instantiate(fist, fistSpawn.position, Quaternion.identity);
-        Rigidbody2D punchThr = fist.GetComponent<Rigidbody2D>();
-        punchThr.velocity = new Vector2(transform.localScale.x * throwForce, 5f);
+      //  Instantiate(fist, fistSpawn.position, Quaternion.identity);
+      //  Rigidbody2D punchThr = fist.GetComponent<Rigidbody2D>();
+       // punchThr.velocity = new Vector2(transform.localScale.x * throwForce, 5f);
 
 
     }

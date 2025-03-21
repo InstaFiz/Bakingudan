@@ -17,7 +17,7 @@ public class Punch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerController = GetComponent<PlatformerPlayerController>();
+       // playerController = GetComponent<PlatformerPlayerController>();
     }
 
     // Update is called once per frame
@@ -27,9 +27,9 @@ public class Punch : MonoBehaviour
     {
 
 
-        if (Input.GetKeyDown(inputKey))
+      //  if (Input.GetKeyDown(inputKey))
         {
-            punch();
+          //  punch();
 
 
         }
@@ -38,9 +38,9 @@ public class Punch : MonoBehaviour
 
     void punch() {
         //  puncher =Instantiate(fist, fistSpawn.position, Quaternion.identity);
-        Instantiate(fist, fistSpawn.position, Quaternion.identity);
-        Rigidbody2D punchThr = fist.GetComponent<Rigidbody2D>();
-        punchThr.velocity = new Vector2(transform.localScale.x * throwForce, 5f);
+       // Instantiate(fist, fistSpawn.position, Quaternion.identity);
+       //// Rigidbody2D punchThr = fist.GetComponent<Rigidbody2D>();
+       // punchThr.velocity = new Vector2(transform.localScale.x * throwForce, 5f);
 
 
     }
