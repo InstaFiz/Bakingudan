@@ -1068,6 +1068,7 @@ MonoBehaviour:
   preBomb: {fileID: 6151968940327687398, guid: 2959920082f81da4b8705948839cce73, type: 3}
   bombHoldPoint: {fileID: 1739669869}
   throwForce: 10
+  crown: {fileID: 1660197764}
 --- !u!114 &716039944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1425,6 +1426,7 @@ MonoBehaviour:
   preBomb: {fileID: 6151968940327687398, guid: 2959920082f81da4b8705948839cce73, type: 3}
   bombHoldPoint: {fileID: 2134886985}
   throwForce: 10
+  crown: {fileID: 1660197764}
 --- !u!114 &806987922
 MonoBehaviour:
   m_ObjectHideFlags: 0

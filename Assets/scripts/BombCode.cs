@@ -14,6 +14,7 @@ public class BombCode : MonoBehaviour
     public float throwForce = 10f;
     private GameObject heldBomb = null; // Track if the player is holding a bomb
     private PlatformerPlayerController playerController;
+    public GameObject crown; // Reference to the crown object
 
     void Start()
     {
@@ -66,5 +67,25 @@ public class BombCode : MonoBehaviour
         }
 
         heldBomb = null; // Reset held bomb
+
+        // **Reduce Durability if Player Has the Crown**
+        if (playerController.theKing)
+        {
+            playerController.durability -= 1;
+            Debug.Log("Crown Player Durability: " + playerController.durability);
+
+            // If durability reaches zero, remove the crown
+            if (playerController.durability <= 0)
+            {
+                RemoveCrown();
+            }
+        }
+    }
+
+    void RemoveCrown()
+    {
+        playerController.theKing = false; // Player loses the crown
+        crown.GetComponent<CrownScript>().active = true; // Make the crown available for others
+        Debug.Log("Crown lost due to durability depletion!");
     }
 }
