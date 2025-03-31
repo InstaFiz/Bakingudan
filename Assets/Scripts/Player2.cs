@@ -30,6 +30,6 @@ public class Player2 : MonoBehaviour
     void Die()
     {
         gameObject.SetActive(false); // Disable player on death
-        ScoreManager.Instance.PlayerEliminated(); // Notify ScoreManager
+        ScoreManager.Instance.PlayerEliminated("Player 2");
     }
 }
