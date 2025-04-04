@@ -1069,7 +1069,7 @@ MonoBehaviour:
   bombHoldPoint: {fileID: 1739669869}
   throwForce: 10
   crown: {fileID: 1660197764}
-  normalBomb: {fileID: 6151968940327687398, guid: 2959920082f81da4b8705948839cce73, type: 3}
+  normalBomb: {fileID: 6151968940327687398, guid: 5b0134ce1d003444eb3190ffa493bbf5, type: 3}
   crownBomb: {fileID: 6151968940327687398, guid: 0464fb3d4a32ffe4aa75e70cc40a3111, type: 3}
 --- !u!114 &716039944
 MonoBehaviour:
@@ -1529,7 +1529,7 @@ MonoBehaviour:
   bombHoldPoint: {fileID: 2134886985}
   throwForce: 10
   crown: {fileID: 1660197764}
-  normalBomb: {fileID: 6151968940327687398, guid: 2959920082f81da4b8705948839cce73, type: 3}
+  normalBomb: {fileID: 6151968940327687398, guid: 5b0134ce1d003444eb3190ffa493bbf5, type: 3}
   crownBomb: {fileID: 6151968940327687398, guid: 0464fb3d4a32ffe4aa75e70cc40a3111, type: 3}
 --- !u!114 &806987922
 MonoBehaviour:
