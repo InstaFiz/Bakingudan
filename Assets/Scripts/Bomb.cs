@@ -8,10 +8,10 @@ public class Bomb : MonoBehaviour
     private AudioSource bombAudio;
 
 
-    public float explosionDelay = 3f; // Time before explosion
+    public float explosionDelay = 1f; // Time before explosion
     public GameObject explosionEffect; // Assign an explosion animation or particle effect
     private bool hasExploded = false;
-    public int damage = 25; // Default bomb damage (increased if thrown by king)
+    public int damage = 15; // Default bomb damage (increased if thrown by king)
 
     void Start()
     {

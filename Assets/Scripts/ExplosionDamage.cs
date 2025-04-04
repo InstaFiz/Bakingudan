@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExplosionDamage : MonoBehaviour
 {
-    public int damageAmount = 25; // Default damage (updated by bomb)
+    public int damageAmount = 15; // Default damage (updated by bomb)
     private bool active = true;
 
     private void OnTriggerEnter2D(Collider2D collision)

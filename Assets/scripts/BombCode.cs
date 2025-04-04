@@ -15,6 +15,9 @@ public class BombCode : MonoBehaviour
     private GameObject heldBomb = null; // Track if the player is holding a bomb
     private PlatformerPlayerController playerController;
     public GameObject crown; // Reference to the crown object
+    public GameObject normalBomb;
+    public GameObject crownBomb;
+
 
     void Start()
     {
@@ -38,9 +41,10 @@ public class BombCode : MonoBehaviour
 
     void PickUpBomb()
     {
-        heldBomb = Instantiate(preBomb, bombHoldPoint.position, Quaternion.identity);
-        heldBomb.transform.parent = bombHoldPoint; // Attach bomb to player
-        heldBomb.GetComponent<Rigidbody2D>().isKinematic = true; // Prevent movement while held
+        GameObject bombToSpawn = playerController.theKing ? crownBomb : normalBomb;
+        heldBomb = Instantiate(bombToSpawn, bombHoldPoint.position, Quaternion.identity);
+        heldBomb.transform.parent = bombHoldPoint;
+        heldBomb.GetComponent<Rigidbody2D>().isKinematic = true;
     }
 
     void ThrowBomb()
@@ -57,7 +61,7 @@ public class BombCode : MonoBehaviour
         if (bombScript != null)
         {
             // If player has the crown, increase bomb damage
-            bombScript.damage = playerController.theKing ? 50 : 25;
+            bombScript.damage = playerController.theKing ? 25 : 15;
 
             bombScript.StartExplosionTimer();
         }
