@@ -3278,12 +3278,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 209206323}
     - target: {fileID: 5709506966934032189, guid: c3084aa721e202b439c83d141c7d7aff, type: 3}
+      propertyPath: sentences.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709506966934032189, guid: c3084aa721e202b439c83d141c7d7aff, type: 3}
       propertyPath: sentences.Array.data[0]
       value: Be the last player to survive or get blown up by your foe...
       objectReference: {fileID: 0}
     - target: {fileID: 5709506966934032189, guid: c3084aa721e202b439c83d141c7d7aff, type: 3}
       propertyPath: sentences.Array.data[1]
       value: Throw your bombs and evade your opponents....
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709506966934032189, guid: c3084aa721e202b439c83d141c7d7aff, type: 3}
+      propertyPath: sentences.Array.data[6]
+      value: The player who grabs the crown(hexgon shape) will be given a power up
+        that increases their bomb's damage as well as bomb color
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709506966934032189, guid: c3084aa721e202b439c83d141c7d7aff, type: 3}
+      propertyPath: sentences.Array.data[7]
+      value: This power up will only last for 10 throws so make the most of it
       objectReference: {fileID: 0}
     - target: {fileID: 5709506966934032190, guid: c3084aa721e202b439c83d141c7d7aff, type: 3}
       propertyPath: m_Name
